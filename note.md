@@ -5,8 +5,8 @@ vault secrets enable -path=hellocloud-aws-master-account aws
 /config/root Post Method
 vault write
 # Vault configure to connect to AWS -path=hellocloud-aws-master-account aws #post type(vault write)
-export AWS_ACCESS_KEY_ID=AKIAZQ3DPOABE7DL24MF
-export AWS_SECRET_ASSCESS_KEY=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
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ASSCESS_KEY=
 
 vault write hellocloud-aws-master-account/config/root \ 
 access_key=$AWS_ACCESS_KEY_ID \
