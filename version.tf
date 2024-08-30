@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    vault = {
-      source  = "hashicorp/vault"
-      version = "4.4.0"
+    hcp = {
+      source = "hashicorp/hcp"
+      version = "0.95.1"
     }
   }
 }
