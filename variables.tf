@@ -19,7 +19,7 @@ variable "cluster_cider" {
 variable "vault_cluster_id" {
     description = "Cluster Name"
     type = string
-    default = "hcp-vault-cluster"
+    default = "hellocloud-hcp-vault-cluster"
 }
 
 variable "vault_hvn" {
