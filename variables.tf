@@ -25,7 +25,7 @@ variable "vault_cluster_id" {
 variable "vault_hvn_1" {
     description = "HCP HVN ID"
     type = string
-    default = "hvn"
+    default = "hvn_1"
 }
 
 variable "tier_type" {
