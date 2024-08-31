@@ -22,7 +22,7 @@ variable "vault_cluster_id" {
     default = "hellocloud-hcp-vault-cluster"
 }
 
-variable "vault_hvn_1" {
+variable "vault_hvn" {
     description = "HCP HVN ID"
     type = string
     default = "hvn"
