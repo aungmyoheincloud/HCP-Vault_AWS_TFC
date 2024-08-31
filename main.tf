@@ -1,5 +1,5 @@
-resource "hcp_hvn" "vault_hvn_1" {
-  hvn_id         = var.vault_hvn_1
+resource "hcp_hvn" "vault_hvn" {
+  hvn_id         = var.vault_hvn
   cloud_provider = var.cloud_provider
   region         = var.region
   cidr_block     = var.cluster_cider
