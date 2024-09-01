@@ -1,0 +1,10 @@
+vault-token = "hvs.CAESIFqndiyhgAwe6xbOkTh-_Eu9maJLsLwBUiPwEZ9V1bYsGicKImh2cy5sZjJpaHk4RXZhSXVvd08xSE52QU1GcVIuUEtJZFMQqAY"
+
+tfc token = 7obHrDW2pRWwHw.atlasv1.FTGlJlI2h9WHP6wFSAq0CqOTDxObGziN6Aa2yvonEcUS5gzNoEAu9ephhNQ2r53HAhk
+gh token = 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
+
+AKIAZQ3DPOABE7DL24MF
++YvRFlVvsd7VA7kX7wZHmhOv//Vx/fDnzSuQZ82E
+
+export HCP_CLIENT_ID=gguVrKY5vUIeHW11LmaEh8CsLr7dhwmz
+export HCP_CLIENT_SECRET=E5PRCpjV5FAw7EUPcOOKtbx_ZeQ9ofPY-u3KBLzoBNTmzcQlZx5oUxBsM2MRdntc
