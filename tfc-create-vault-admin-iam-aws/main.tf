@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "ap-southeast-1"
+  # Configuration options
+}
+
 resource "aws_iam_user" "vault_admin" {
   name = var.user_name
   path = "/"
