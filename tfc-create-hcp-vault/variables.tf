@@ -22,10 +22,10 @@ variable "vault_cluster_id" {
     default = "hcp-vault-cluster"
 }
 
-variable "vault_hvn-1" {
+variable "vault_hvn" {
     description = "HCP HVN ID"
     type = string
-    default = "hvn-1"
+    default = "hvn"
 }
 
 variable "tier_type" {
