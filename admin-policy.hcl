@@ -66,4 +66,3 @@ path "example/*" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 
-#https://developer.hashicorp.com/vault/tutorials/policies/policieshttps://developer.hashicorp.com/vault/tutorials/policies/policies
