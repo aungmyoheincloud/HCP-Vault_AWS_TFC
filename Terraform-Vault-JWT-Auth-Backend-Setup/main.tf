@@ -146,5 +146,5 @@ EOT
 #   user_claim = "terraform_full_workspace"
 #   role_type  = "jwt"
 #   token_ttl  = 1200
-}
+#}
 
