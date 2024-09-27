@@ -18,7 +18,7 @@ variable "tfc_hostname" {
 
 variable "tfc_role_name" {
   type        = string
-  default     = "tfc-kv-secret-role"
+  default     = "tfc-admin-role"
   description = "This role is to test to create KV Secret with this jwt secret backend with tfc"
 }
 
