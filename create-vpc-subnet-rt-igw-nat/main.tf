@@ -1,14 +1,52 @@
+# provider "aws" {
+#   access_key = data.vault_aws_access_credentials.creds.access_key
+#   secret_key = data.vault_aws_access_credentials.creds.secret_key
+# }
+
 resource "aws_vpc" "main" {
   cidr_block = "10.10.0.0/16"
 
   tags = {
-    Name = "vault-aws-vpc
+    Name = "master-prod-vpc"
   }
 }
 
 ################################################################################
 # Publiс Subnets
 ################################################################################
+
+# resource "aws_subnet" "public_subnet_01" {
+#   vpc_id     = aws_vpc.main.id
+#   cidr_block = var.public_subnet_01
+#   availability_zone = var.az_1a
+#   map_public_ip_on_launch = true
+
+#   tags = {
+#     Name = "public-subnet-01-ap-southeast-1a"
+#   }
+# }
+
+# resource "aws_subnet" "public_subnet_02" {
+#   vpc_id     = aws_vpc.main.id
+#   cidr_block = var.public_subnet_02
+#   availability_zone = var.az_1b
+#   map_public_ip_on_launch = true
+
+#   tags = {
+#     Name = "public-subnet-02-ap-southeast-1b"
+#   }
+# }
+
+# resource "aws_subnet" "public_subnet_03" {
+#   vpc_id     = aws_vpc.main.id
+#   cidr_block = var.public_subnet_03
+#   availability_zone = var.az_1c
+#   map_public_ip_on_launch = true
+
+#   tags = {
+#     Name = "public-subnet-03-ap-southeast-1c"
+#   }
+# }
 
 resource "aws_subnet" "public_subnets" {
   count                   = length(var.public_subnets)
@@ -22,6 +60,33 @@ resource "aws_subnet" "public_subnets" {
   }
 }
 
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "public-route-table"
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  count          = length(var.public_subnets)
+  subnet_id      = aws_subnet.public_subnets[count.index].id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+resource "aws_route" "public" {
+  route_table_id         = aws_route_table.public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.public_igw.id
+}
+
+resource "aws_internet_gateway" "public_igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "public-igw"
+  }
+}
 ################################################################################
 # Private Subnets
 ################################################################################
@@ -36,9 +101,9 @@ resource "aws_subnet" "private_subnets" {
     Name = "private-subnet-0${count.index + 1}-${data.aws_availability_zones.azs.names[count.index]}"
   }
 }
+
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.main.id
-
 
   tags = {
     Name = "private-route-table"
@@ -70,8 +135,6 @@ resource "aws_nat_gateway" "nat" {
     Name = "gw NAT"
   }
 
-  # To ensure proper ordering, it is recommended to add an explicit dependency
-  # on the Internet Gateway for the VPC.
   depends_on = [aws_internet_gateway.public_igw]
 }
 
@@ -89,9 +152,9 @@ resource "aws_subnet" "db_subnets" {
     Name = "db-subnet-0${count.index + 1}-${data.aws_availability_zones.azs.names[count.index]}"
   }
 }
+
 resource "aws_route_table" "db_rt" {
   vpc_id = aws_vpc.main.id
-
 
   tags = {
     Name = "db-route-table"

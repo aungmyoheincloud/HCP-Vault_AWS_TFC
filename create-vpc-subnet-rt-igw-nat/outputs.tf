@@ -2,7 +2,7 @@ output "azs" {
   value = data.aws_availability_zones.azs.names
 }
 
-###############################################################################
+################################################################################
 # VPC
 ################################################################################
 output "vpc_id" {
@@ -71,9 +71,9 @@ output "public_route_table_association_ids" {
   description = "List of IDs of the public route table association"
   value       = aws_route_table_association.public[*].id
 }
-# ################################################################################
-# # Private Subnets
-# ################################################################################
+################################################################################
+# Private Subnets
+################################################################################
 # output "private_subnets" {
 #   description = "List of IDs of private subnets"
 #   value       = aws_subnet.private[*].id
@@ -152,3 +152,4 @@ output "public_route_table_association_ids" {
 # output "natgw_interface_ids" {
 #   description = "List of Network Interface IDs assigned to NAT Gateways"
 #   value       = aws_nat_gateway.nat.network_interface_id
+# }
