@@ -32,7 +32,9 @@ data "aws_iam_policy_document" "vault_root" {
       "iam:RemoveUserFromGroup"
     ]
     resources = [
-      "arn:aws:iam::654654271490:user/vault-*"
+      "arn:aws:iam::654654271490:user/vault-root", # Specific to vault-root
+      "arn:aws:iam::654654271490:user/vault-*",    # Wildcard for other vault users if needed
+      "arn:aws:iam::654654271490:user/*"           # All users (if needed)
     ]
   }
 }
