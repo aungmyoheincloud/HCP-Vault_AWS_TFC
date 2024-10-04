@@ -141,7 +141,7 @@ resource "vault_jwt_auth_backend_role" "example" {
   bound_audiences   = ["vault.workload.identity"]
   bound_claims_type = "glob"
   bound_claims = {
-    sub = "organization:hc-tfc:project:Default Project:workspace:*:run_phase:*"
+    sub = "organization:HCP-Vault_AWS_TFC:project:Default Project:workspace:*:run_phase:*"
   }
   user_claim = "terraform_full_workspace"
   role_type  = "jwt"
